@@ -47,14 +47,62 @@ public:
 
 	bool ZmienRozmiar(unsigned NowyRozmiar)
 	{
+		//_____ Czy nowy rozmiar > od starego
 		if (!(NowyRozmiar) > _uRozmiar)return false;
 		
+		//_____ Ponowna alokacja pamiêci
 		int *pNowaTablica = new int[NowyRozmiar];
+
+		//________ Kopiowanie pamiêci (do, z, rozmiar *sizeof(typ danych))
 		memcpy(pNowaTablica, _wskTablica, _uRozmiar * sizeof(int));
+
+		//____ Wyczyszczenie pamiêci starej tablicy (i tak zbêdne dane sa w niej)
 		delete[] _wskTablica;
 
 		_wskTablica = pNowaTablica;
 		_uRozmiar = NowyRozmiar;
 		return true;
+	}
+};
+
+class CIntArray2D
+{
+	static const int DOMYSLNY_ROZMIAR = 10;
+
+private:
+	int _IloscWierszy;
+	int _IloscKolumn;
+	int **wskTablica2D;
+
+public:
+	//-------------------------------------------------------------
+	//__________ KONSTRUKTORY + DESTRUKTOR ________________________
+	CIntArray2D(int Wiersze, int Kolumny)
+	{
+		_IloscKolumn = Kolumny;
+		_IloscWierszy = Wiersze;
+		wskTablica2D = new int*[_IloscKolumn];
+
+		for (int i = 0; i < _IloscKolumn; i++)
+		{
+			wskTablica2D[i] = new int[_IloscWierszy];
+		}
+	}
+	~CIntArray2D() {
+		for (int i = 0; i < _IloscKolumn; i++)
+			delete[] wskTablica2D[i];
+
+		delete[] wskTablica2D;
+	}
+
+	//-------------------------------------------------------------
+	//__________ METODY ___________________________________________
+
+	void WypelnienieTablicy() {
+		for (int i = 0; i < _IloscKolumn; i++)
+		{
+			for (int j = 0; j < _IloscWierszy; j++)
+				wskTablica2D[i][j] = i*j;
+		}
 	}
 };

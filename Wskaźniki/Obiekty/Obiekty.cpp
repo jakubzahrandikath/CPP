@@ -19,7 +19,7 @@ int main()
 	delete[] pfTablica;
 
 	//KLASA Z DYNAMIKA
-	srand(static_cast<unsigned int>(time(NULL)));
+	srand(static_cast<unsigned int>(time(NULL)));  //LOSOWANIE DLA C++
 
 	CIntArray aTablica(rand());
 
