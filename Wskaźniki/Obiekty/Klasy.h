@@ -10,6 +10,8 @@ private:
 	int *_wskTablica;
 	unsigned int _uRozmiar;
 public:
+	//-------------------------------------------------------------
+	//__________ KONSTRUKTORY + DESTRUKTOR ________________________
 	CIntArray()
 	{
 		_uRozmiar = DOMYSLNY_ROZMIAR;
@@ -24,7 +26,9 @@ public:
 	{
 		delete[] _wskTablica;
 	}
+	//-------------------------------------------------------------
 
+	//________________ METODY _____________________________________
 	int Pobierz(int Indeks)
 	{
 		if (Indeks < _uRozmiar) return _wskTablica[Indeks];
