@@ -1,8 +1,5 @@
-// Zaawansowane obiekty.cpp: Okreœla punkt wejœcia dla aplikacji konsoli.
-//
-
 #include "stdafx.h"
-
+#include "Klasy.h"
 
 int main()
 {
